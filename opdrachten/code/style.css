@@ -1,0 +1,35 @@
+
+body {
+    background-image: url("img.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.list {
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-image: linear-gradient( rgba(136, 222, 235, 0.46), rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.5));
+    height: 100vh;
+    border-radius: 5% 5% 0% 0%;
+}
+
+ul {
+    font-size: 40px;
+    list-style-type: none;
+}
+
+.horul li{
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 5%;
+}

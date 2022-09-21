@@ -20,7 +20,12 @@
         todoList.innerHTML = "";
         todoResult.forEach(todoItem => {
             
-            todoList.innerHTML += `<li>${todoItem.data().description}</li>`;
+            todoList.innerHTML += `<ul class="horul">
+            <li><input type="checkbox" checked="checked"></li>
+            <li>${todoItem.data().description}</li>
+            <li>17 / 11 /2000</li>
+            <li>25 / 11 / 2022</li>
+            </ul>`;
         });
     }
     
