@@ -10,14 +10,38 @@
     <title>Ucll todo</title>
 </head>
 <body>
-    <div class="list">
-        <h1>Todo list</h1>
-        <ul id="todo-items-list"></ul>
-    </div>
+    <section id="loading">loading....</section>
+    <section id="login">
+        <input type="text" id="login-email">
+        <input type="password" id="login-password">
+        <button id="login-button">Login</button>
+        <a href="#" id="go-to-register">No account yet? Register</a>
+    </section>
+
+    <section id="register">
+        <input type="text" id="register-email">
+        <input type="password" id="register-password">
+        <button id="register-button">register</button>
+        <a href="#" id="go-to-login">Already have an account yet? log in</a>
+    </section>
+
+    <section id="todos">
+        <div class="list">
+            <h1>Todo list</h1>
+            <ul id="todo-items-list"></ul>
+            <input type="text" id="create-todo-description">    
+            <button id="create-todo-button">Create todo</button>
+        </div>
+    </section>
+
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+        import { getFirestore, collection, query, where, getDocs, doc, setDoc} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";        
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+        
+        // import { auth} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-service.js";
+
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -34,20 +58,23 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
-        window.firestore = {
-            collection,
-            query,
-            where,
-            getDocs
-        }
-
-        window.firebase = {
+        window.fiba = {
             isReady: function () {
                 return !!app && !!db;
             },
             db,
-            app
+            app,
+            auth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            doc,
+            setDoc,
+            where,
+            query,
+            collection,
+            getDocs
         };
     </script>
     <script src="code.js" defer></script>
