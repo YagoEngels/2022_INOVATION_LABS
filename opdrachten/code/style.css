@@ -1,6 +1,6 @@
 
 body {
-    background-image: url("img.jpg");
+    background-image: url("img2.jpg");
     background-color: #cccccc; /* Used if the image is unavailable */
     height: 100vh; /* You must set a specified height */
     background-position: center; /* Center the image */
@@ -32,4 +32,51 @@ ul {
     float: left;
     text-align: center;
     padding: 5%;
+}
+
+/* the centering of the login/ creating accounts*/
+.center {
+
+    /*vertical*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*de background voor de login ++ layout van die sectie*/
+.loginsBackground {
+    /*background*/
+    background: rgba(21, 33, 57, 0.5);
+    backdrop-filter: blur(5px);
+    /* Note: backdrop-filter has minimal browser support */
+    padding: 3% 2% 3% 2%;
+    border-radius: 50px;
+    margin: auto;
+    width: 15%;
+}
+
+.loginsBackgroundItem  {
+    /*horizontal*/
+    display: block;
+    margin : 7.5% auto;
+    width: 90%;
+}
+
+.loginsBackgroundItem2  {
+    /*horizontal*/
+    display: block;
+    margin : 7.5% auto;
+    color: #cccccc;
+}
+
+input, button {
+    background-color:rgba(21, 33, 57, 0.5);
+    color: #cccccc;
+    border: none;
+}
+
+a {
+    display: block;
+    width: 80%;
 }

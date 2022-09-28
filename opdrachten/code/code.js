@@ -7,7 +7,8 @@ const elements = {
     loginButton: document.querySelector("#login-button"),
     gotoRegister: document.querySelector("#go-to-register"),
     gotoLogin: document.querySelector("#go-to-login"),
-    newTodoDescription: document.querySelector("#create-todo-description")
+    newTodoDescription: document.querySelector("#create-todo-description"),
+    newTodoButton: document.querySelector("#create-todo-button"),
 }
 
 const applicationSections = ["loading", "login", "register", "todos"];
@@ -31,8 +32,11 @@ elements.gotoRegister.addEventListener("click", () => showRelevantHTML("register
 elements.gotoLogin.addEventListener("click", () => showRelevantHTML("login"));
 
 async function loadTodoItems() {
+    const {db, collection, getDocs, auth} = window.fiba;
+
+    const {uid} = auth.currentUser;
     const todoList = document.querySelector("#todo-items-list");
-    const todoResult = await getDocs(collection(db,"todo-items"));
+    const todoResult = await getDocs(collection(db,uid));
 
     todoList.innerHTML = "";
     todoResult.forEach(todoItem => {
@@ -50,6 +54,7 @@ async function todoApp(){
     
     elements.registerButton.addEventListener("click", registerUser);
     elements.loginButton.addEventListener("click", loginUser);
+    elements.newTodoButton.addEventListener("click",addTodoItem);
     
     if(auth.currentUser) {
         showRelevantHTML("todos");
@@ -114,4 +119,8 @@ async function addTodoItem(){
         alert(error.message);
     }
 }
+
+
+
+
 waitForFirebaseAndStart();

@@ -11,25 +11,30 @@
 </head>
 <body>
     <section id="loading">loading....</section>
-    <section id="login">
-        <input type="text" id="login-email">
-        <input type="password" id="login-password">
-        <button id="login-button">Login</button>
-        <a href="#" id="go-to-register">No account yet? Register</a>
+
+    <section id="login" class="center loginsBackground">
+        <p class="loginsBackgroundItem2">email:</p>
+        <input type="text" id="login-email" class="loginsBackgroundItem">
+        <p class="loginsBackgroundItem2">password:</p>
+        <input type="password" id="login-password" class="loginsBackgroundItem">
+        <button id="login-button" class="loginsBackgroundItem">Login</button>
+        <a href="#" id="go-to-register" class="loginsBackgroundItem2">No account yet? Register here</a>
     </section>
 
-    <section id="register">
-        <input type="text" id="register-email">
-        <input type="password" id="register-password">
-        <button id="register-button">register</button>
-        <a href="#" id="go-to-login">Already have an account yet? log in</a>
+    <section id="register" class="center loginsBackground">
+        <p class="loginsBackgroundItem2">email:</p>
+        <input type="text" id="register-email" class="loginsBackgroundItem">
+        <p class="loginsBackgroundItem2">password:</p>
+        <input type="password" id="register-password" class="loginsBackgroundItem">
+        <button id="register-button" class="loginsBackgroundItem">register</button>
+        <a href="#" id="go-to-login" class="loginsBackgroundItem2">already have an account? login here</a>
     </section>
 
     <section id="todos">
         <div class="list">
             <h1>Todo list</h1>
             <ul id="todo-items-list"></ul>
-            <input type="text" id="create-todo-description">    
+            <input type="text" id="create-todo-description" >    
             <button id="create-todo-button">Create todo</button>
         </div>
     </section>
