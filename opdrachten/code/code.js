@@ -41,10 +41,8 @@ async function loadTodoItems() {
     todoList.innerHTML = "";
     todoResult.forEach(todoItem => {
         
-        todoList.innerHTML += `<ul class="horul">
-        <li><input type="checkbox" checked="checked"></li>
+        todoList.innerHTML += `<ul">
         <li>${todoItem.data().description}</li>
-        <li>17 / 11 /2000</li>
         </ul>`;
     });
 }
