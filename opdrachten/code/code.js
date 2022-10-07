@@ -42,12 +42,8 @@ async function loadTodoItems() {
 
     todoList.innerHTML = "";
     todoResult.forEach(todoItem => {
-        const testId = `delbutton-${todoItem.id}`;
-        todoList.innerHTML +=`<li>${todoItem.data().description} <button id="${testId}">delete</button></li>`;
-
-        document.querySelector(`#${testId}`).addEventListener("click", function(){
-            console.log(todoItem.id)
-        });
+        todoList.innerHTML +=`<li>${todoItem.data().description} <button onclick="deleteTodoItem('${todoItem.id}')">del</button></li>`;
+        console.log(todoItem.id);
     });
 }
 
@@ -128,6 +124,8 @@ async function deleteTodoItem(id){
     try{
         const {db, deleteDoc, doc, auth} = window.fiba;
         const userId = auth.currentUser.uid;
+
+        console.log("deleting " + id);
 
         await deleteDoc(doc(db, userId, id));
         loadTodoItems();
