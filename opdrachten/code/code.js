@@ -9,6 +9,7 @@ const elements = {
     gotoLogin: document.querySelector("#go-to-login"),
     newTodoDescription: document.querySelector("#create-todo-description"),
     newTodoButton: document.querySelector("#create-todo-button"),
+    deletebut: document.querySelectorAll("#delBut")
 }
 
 const applicationSections = ["loading", "login", "register", "todos"];
@@ -38,14 +39,19 @@ async function loadTodoItems() {
     const todoList = document.querySelector("#todo-items-list");
     const todoResult = await getDocs(collection(db,uid));
 
+
     todoList.innerHTML = "";
     todoResult.forEach(todoItem => {
-        
-        todoList.innerHTML += `<ul">
-        <li>${todoItem.data().description}</li>
-        </ul>`;
+        const testId = `delbutton-${todoItem.id}`;
+        todoList.innerHTML +=`<li>${todoItem.data().description} <button id="${testId}">delete</button></li>`;
+
+        document.querySelector(`#${testId}`).addEventListener("click", function(){
+            console.log(todoItem.id)
+        });
     });
 }
+
+
 
 async function todoApp(){
     const {auth} = window.fiba;
@@ -118,7 +124,16 @@ async function addTodoItem(){
     }
 }
 
+async function deleteTodoItem(id){
+    try{
+        const {db, deleteDoc, doc, auth} = window.fiba;
+        const userId = auth.currentUser.uid;
 
-
+        await deleteDoc(doc(db, userId, id));
+        loadTodoItems();
+    } catch (error){
+        alert(error.message);
+    }
+}
 
 waitForFirebaseAndStart();
